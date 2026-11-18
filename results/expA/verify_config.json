@@ -1,0 +1,219 @@
+{
+ "v3": {
+  "vocab": 128815,
+  "compressed": 98627,
+  "reduction_pct": 23.44,
+  "top_merges": [
+   {
+    "count": 163,
+    "examples": [
+     "\t",
+     "\n",
+     "\r",
+     " ",
+     "  ",
+     "\n\n"
+    ]
+   },
+   {
+    "count": 54,
+    "examples": [
+     "A",
+     "a",
+     " a",
+     " A",
+     "á",
+     "ä"
+    ]
+   },
+   {
+    "count": 40,
+    "examples": [
+     "O",
+     "o",
+     " o",
+     " O",
+     "ó",
+     "ö"
+    ]
+   },
+   {
+    "count": 35,
+    "examples": [
+     "E",
+     "e",
+     " e",
+     " E",
+     "é",
+     "è"
+    ]
+   },
+   {
+    "count": 30,
+    "examples": [
+     "I",
+     "i",
+     " I",
+     " i",
+     "í",
+     "ì"
+    ]
+   },
+   {
+    "count": 30,
+    "examples": [
+     "U",
+     "u",
+     " u",
+     " U",
+     "ü",
+     "ú"
+    ]
+   }
+  ],
+  "cjk_tokens": 35346,
+  "cjk_in_merged_group": 0
+ },
+ "v41": {
+  "vocab": 129280,
+  "compressed": 99092,
+  "reduction_pct": 23.35,
+  "top_merges": [
+   {
+    "count": 163,
+    "examples": [
+     "\t",
+     "\n",
+     "\r",
+     " ",
+     "  ",
+     "\n\n"
+    ]
+   },
+   {
+    "count": 54,
+    "examples": [
+     "A",
+     "a",
+     " a",
+     " A",
+     "á",
+     "ä"
+    ]
+   },
+   {
+    "count": 40,
+    "examples": [
+     "O",
+     "o",
+     " o",
+     " O",
+     "ó",
+     "ö"
+    ]
+   },
+   {
+    "count": 35,
+    "examples": [
+     "E",
+     "e",
+     " e",
+     " E",
+     "é",
+     "è"
+    ]
+   },
+   {
+    "count": 30,
+    "examples": [
+     "I",
+     "i",
+     " I",
+     " i",
+     "í",
+     "ì"
+    ]
+   },
+   {
+    "count": 30,
+    "examples": [
+     "U",
+     "u",
+     " u",
+     " U",
+     "ü",
+     "ú"
+    ]
+   }
+  ],
+  "cjk_tokens": 35346,
+  "cjk_in_merged_group": 0
+ },
+ "trad_simp_single_token_pairs": {
+  "pairs": 2171,
+  "same_compressed_id": 0,
+  "examples": [
+   [
+    "這",
+    "这",
+    false
+   ],
+   [
+    "個",
+    "个",
+    false
+   ],
+   [
+    "來",
+    "来",
+    false
+   ],
+   [
+    "時",
+    "时",
+    false
+   ],
+   [
+    "會",
+    "会",
+    false
+   ],
+   [
+    "們",
+    "们",
+    false
+   ],
+   [
+    "為",
+    "为",
+    false
+   ],
+   [
+    "說",
+    "说",
+    false
+   ],
+   [
+    "過",
+    "过",
+    false
+   ],
+   [
+    "後",
+    "后",
+    false
+   ]
+  ]
+ },
+ "v41_matches_config_99092": true,
+ "v41_layout_rows_ours": [
+  384006168,
+  384016682
+ ],
+ "v41_layout_rows_config": [
+  384006168,
+  384016682
+ ],
+ "v41_layout_matches": true,
+ "v41_params_B": 196.61
+}

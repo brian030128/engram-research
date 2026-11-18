@@ -1,0 +1,4 @@
+✅ Forward Complete!
+input_ids.shape=torch.Size([1, 14])
+output.shape=torch.Size([1, 14, 129280])
+demo_wall_s=10.3

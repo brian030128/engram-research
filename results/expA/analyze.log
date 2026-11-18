@@ -1,0 +1,14 @@
+wiki_en 2 types 4061240 secs 254
+wiki_en 3 types 14429870 secs 295
+wiki_en 4 types 22204217 secs 345
+support_en 2 types 75290 secs 3
+support_en 3 types 252066 secs 6
+support_en 4 types 501375 secs 9
+wiki_zh_tw 2 types 2220951 secs 10
+wiki_zh_tw 3 types 6096704 secs 24
+wiki_zh_tw 4 types 8112066 secs 41
+wiki_zh_cn 2 types 2978020 secs 11
+wiki_zh_cn 3 types 6848835 secs 26
+wiki_zh_cn 4 types 8411955 secs 43
+ANALYSIS_DONE
+exit=0 wall_s=444.0 user_s=177.6 sys_s=264.2 maxrss_gb=5.81

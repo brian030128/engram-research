@@ -1,0 +1,7 @@
+{"name": "wiki_en", "tokens": 30000000, "docs": 19775, "seconds": 68.8}
+Generating train split:   0%|          | 0/26872 [00:00<?, ? examples/s]Generating train split:  37%|███▋      | 10000/26872 [00:00<00:00, 42550.66 examples/s]Generating train split: 100%|██████████| 26872/26872 [00:00<00:00, 59751.14 examples/s]Generating train split: 100%|██████████| 26872/26872 [00:00<00:00, 57006.45 examples/s]
+{"name": "support_en", "tokens": 3667943, "docs": 26872, "seconds": 7.4}
+zh chars 16016473 docs 2801
+{"name": "wiki_zh_tw", "tokens": 10000000, "docs": 2461, "seconds": 64.6}
+{"name": "wiki_zh_cn", "tokens": 9891631, "docs": 2800, "seconds": 45.9}
+CORPUS_DONE

@@ -1,0 +1,16 @@
+# Local environment and caches
+.venv/
+.cache/
+__pycache__/
+*.pyc
+
+# Downloaded third-party material (re-fetch: see README)
+third_party/
+notes/external/
+notes/github/
+notes/fig_render/
+notes/v1_v2_sentence_diff.txt
+
+# Large or scratch outputs (regenerate with scripts/expA_1_corpus.py)
+results/expA/corpus/
+results/demo_cwd/

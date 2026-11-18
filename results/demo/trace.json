@@ -1,0 +1,58 @@
+{
+ "trace": {
+  "param_groups": {
+   "multi_head_embedding": 662026496,
+   "short_conv": 20480,
+   "value_proj": 1049600,
+   "key_projs": 4198400,
+   "norm1": 4096,
+   "norm2": 4096
+  },
+  "total": 667303168,
+  "table_rows": 10344164,
+  "head_dim": 64,
+  "conv_weight_abs_mean_at_init": 0.24989016354084015,
+  "gate_mean_random_init": 0.5061931014060974,
+  "shapes": {
+   "input_ids": [
+    1,
+    13
+   ],
+   "hash_ids": [
+    1,
+    13,
+    16
+   ],
+   "rows": [
+    1,
+    13,
+    16,
+    64
+   ],
+   "e_t": [
+    1,
+    13,
+    1024
+   ],
+   "hidden": [
+    1,
+    13,
+    4,
+    1024
+   ],
+   "gate": [
+    1,
+    13,
+    4
+   ],
+   "output": [
+    1,
+    13,
+    4,
+    1024
+   ]
+  }
+ },
+ "our_hash_equals_demo_hash": true,
+ "demo_compressed_vocab": 98627
+}

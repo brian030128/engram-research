@@ -1,0 +1,17 @@
+<section id="alloc" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">配置比例：純 MoE 不是最佳，但底部很平</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;flex:1">
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:48px;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:30px;font-weight:700;color:#3D4654">論文報告</p>
+<p style="font-size:64px;font-weight:700;line-height:1.2">ρ ≈ 75–80%</p>
+<p style="font-size:32px;line-height:1.5;color:#3D4654">9.9B 模型的 val loss 由 1.7248 降到 1.7109。ρ≈40% 時約與純 MoE 打平。</p>
+</div>
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:48px;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:30px;font-weight:700;color:#B8501F">本研究判讀</p>
+<p style="font-size:64px;font-weight:700;line-height:1.2">ρ ≈ 70–95%</p>
+<p style="font-size:32px;line-height:1.5;color:#3D4654">這段的點差距很小，圖上最低點約在 85%。穩健結論是「給 Engram 少量預算就有效」。</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">來源：論文 §3.1 與 Figure 3；本研究判讀為圖上目測值。</p>
+<aside>不要把 20 到 25% 當成精確常數。另外 §3.2 稱 strict power law，但圖是 x 軸取 log、y 軸線性，較接近對數關係，每增加 10 倍記憶體 loss 約降 0.028。</aside>
+</section>
