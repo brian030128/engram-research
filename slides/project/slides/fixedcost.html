@@ -1,0 +1,15 @@
+<section id="fixedcost" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">3.1 · FIXED PER-TOKEN LOOKUP COST</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Why lookup cost stays flat as memory grows</h2>
+<p style="font-size:30px;font-family:'Courier New', monospace;background:#EEF1F5;padding:22px;border-radius:12px">rows read per token = (N − 1) × K per layer;  V4.1: 3 × 8 = 24</p>
+<table style="font-size:26px;width:1664px">
+<tr><th style="width:40%">When the table grows…</th><th style="width:60%">What happens per token</th></tr>
+<tr><td>Rows in the table: 2.6 × 10⁵ → 384M</td><td>Rows read stay the same</td></tr>
+<tr><td>Hashing work</td><td>Unchanged: a few integer multiplies and modulos</td></tr>
+<tr><td>Data moved</td><td>Unchanged: about 6.3 KB per layer in V4.1</td></tr>
+<tr><td>Key/value projection</td><td>Fixed cost; grows with width, not rows (~157M weights per V4.1 layer)</td></tr>
+</table>
+<p style="font-size:27px;line-height:1.5;color:#3D4654"><b>Caveat:</b> O(1) is algorithmic. Bigger tables mean more cache and TLB misses, so real latency can still rise. Experiment C measures this.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">Paper §3.1–3.2 and §6.4; V4.1 config. Byte and weight counts are our calculations.</p>
+<aside>The paper states communication volume scales with activated slots, not table size. The table can therefore grow from hundreds of thousands to hundreds of millions of rows without adding compute per token.</aside>
+</section>

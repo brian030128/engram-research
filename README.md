@@ -8,7 +8,7 @@
 | Next-phase experiment plan | Report section 5.5 |
 | Measured results | `results/demo/`, `results/expA/` |
 | Scripts | `scripts/` |
-| Sharing deck, English (39 slides) | `slides/project/` |
+| Sharing deck, English (42 slides, ordered by issue #277 items) | `slides/project/` |
 | Sharing deck, Traditional Chinese (20 slides) | `slides_zh/project/` |
 | Notes and external sources | `notes/` |
 | Paper, official repo | `third_party/` |
