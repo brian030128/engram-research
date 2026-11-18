@@ -1,0 +1,15 @@
+<section id="arch" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">1 · ARCHITECTURE</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15">Dense vs MoE vs Engram</h2>
+<table style="font-size:26px;width:1664px">
+<tr><th style="width:19%">　</th><th style="width:25%">Dense</th><th style="width:28%">MoE</th><th style="width:28%">Engram (on MoE)</th></tr>
+<tr><td>Scales by</td><td>Wider, deeper</td><td>More routed experts</td><td>More table rows</td></tr>
+<tr><td>Active per token</td><td>All parameters</td><td>Shared + top-k experts</td><td>Fixed rows + projections</td></tr>
+<tr><td>Selected by</td><td>—</td><td>Hidden state at run time</td><td>Token IDs, known in advance</td></tr>
+<tr><td>Sparsity type</td><td>None</td><td>Conditional computation</td><td>Conditional memory</td></tr>
+<tr><td>Best at</td><td>General computation</td><td>Context-dependent work</td><td>Local, static, frequent patterns</td></tr>
+<tr><td>Main limit</td><td>Capacity tied to compute</td><td>Routing, expert communication</td><td>Local keys, hash collisions</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">Conditional computation activates part of the computation; conditional memory retrieves part of a stored representation.</p>
+<aside>Engram is added on top of an MoE backbone, not instead of it. The paper’s Engram-27B is MoE-27B with some routed experts swapped for an Engram table.</aside>
+</section>

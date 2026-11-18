@@ -1,0 +1,16 @@
+<section id="memory" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">3 · MEMORY AND EFFICIENCY</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Where the table lives: HBM, DRAM, prefetching</h2>
+<p style="font-size:27px;line-height:1.5;color:#3D4654">Addresses depend only on token IDs, so rows can be fetched before their layer runs, hidden behind earlier computation. MoE routing can’t do this.</p>
+<table style="font-size:25px;width:1664px">
+<tr><th style="width:27%">Stage</th><th style="width:21%">Table location</th><th style="width:36%">Mechanism</th><th style="width:16%">Evidence</th></tr>
+<tr><td>Training (paper)</td><td>Sharded on GPUs</td><td>All-to-All gathers rows and returns gradients</td><td>Described</td></tr>
+<tr><td>Training (V4.1)</td><td>Row-sharded groups</td><td>Prefetched before each pipeline stage</td><td>V4.1 report</td></tr>
+<tr><td>Inference (paper test)</td><td>Host DRAM</td><td>PCIe prefetch overlaps the first block</td><td>Measured</td></tr>
+<tr><td>Inference (V4.1)</td><td>Host memory</td><td>Background RDMA prefetch</td><td>V4.1 report</td></tr>
+<tr><td>RL rollouts (V4.1)</td><td>GPU memory</td><td>Avoids host-memory fragmentation OOM</td><td>V4.1 report</td></tr>
+<tr><td>Multi-level cache</td><td>HBM / DRAM / NVMe</td><td>Hot rows fast, long tail on SSD</td><td>Proposed only</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">Paper §2.5 and Figure 2; DeepSeek-V4.1 tech report §2.4.2 and §3.1.3.</p>
+<aside>Two rows matter: host offload is not used in every stage, and the NVMe tier is only a proposal. Per-token lookup cost is fixed because each token reads a fixed number of rows regardless of table size; real latency can still grow with table size through cache and TLB misses.</aside>
+</section>

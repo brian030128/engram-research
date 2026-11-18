@@ -1,14 +1,12 @@
-<section id="question" data-transition="fade" style="background:#14213D;color:#F5F3EC;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:56px">
-<p style="font-size:30px;font-weight:700;color:#F2A679">論文要回答的兩個問題</p>
-<div style="display:flex;flex-direction:column;gap:48px">
+<section id="question" data-transition="fade" style="background:#14213D;color:#F5F3EC;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:56px">
+<p style="font-size:30px;font-weight:700;color:#F2A679">The two questions the paper answers</p>
 <div style="display:flex;gap:40px;align-items:start">
-<p style="font-size:96px;font-weight:700;line-height:1;color:#F2A679">1</p>
-<h2 style="font-size:60px;font-weight:700;line-height:1.3">能不能給 Transformer 一個原生的查表操作，把固定的東西用「查」的，而不是用「算」的？</h2>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:96px;font-weight:700;line-height:1;color:#F2A679">1</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.3">Can a Transformer get a native lookup, so static patterns are retrieved instead of computed?</h2>
 </div>
 <div style="display:flex;gap:40px;align-items:start">
-<p style="font-size:96px;font-weight:700;line-height:1;color:#F2A679">2</p>
-<h2 style="font-size:60px;font-weight:700;line-height:1.3">總參數固定時，該分多少給專家（計算），多少給記憶（查表）？</h2>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:96px;font-weight:700;line-height:1;color:#F2A679">2</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.3">With total parameters fixed, how much should go to experts and how much to memory?</h2>
 </div>
-</div>
-<aside>第一個問題催生了 Engram 模組，也就是 conditional memory。第二個問題是論文的 Sparsity Allocation，答案是大部分給 MoE、約 20 到 25% 給 Engram。接下來先看 Engram 的想法，再看論文怎麼回答第二個問題。</aside>
+<aside>Question 1 produced the Engram module, conditional memory. Question 2 is the paper’s sparsity-allocation problem; the answer is most of the spare budget to MoE, roughly 20 to 25 percent to Engram.</aside>
 </section>

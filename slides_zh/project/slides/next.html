@@ -1,0 +1,12 @@
+<section id="next" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">下一階段實驗：先做能改變決策的</h2>
+<table style="font-size:28px;width:1664px">
+<tr><th style="width:8%">序</th><th style="width:30%">實驗</th><th style="width:34%">要回答的問題</th><th style="width:28%">主要指標</th></tr>
+<tr><td>1</td><td>D：V4.1 消融，加入繁中</td><td>事實知識存在哪？繁中受益多少？</td><td>各類保留率、繁簡差距</td></tr>
+<tr><td>2</td><td>C：查表延遲與放置</td><td>大表下延遲真的不變嗎？</td><td>p50/p99、cache miss</td></tr>
+<tr><td>3</td><td>E：凍結 backbone 更新知識</td><td>能和 RAG、LoRA 比嗎？</td><td>改寫正確率、副作用</td></tr>
+<tr><td>4</td><td>B：小規模配置比例</td><td>小模型值得用 Engram 嗎？</td><td>val loss、benchmark</td></tr>
+</table>
+<p style="font-size:32px;line-height:1.5;color:#3D4654">實驗 A（hash 碰撞與快取模擬）已完成。實驗 D 預計需要 8 GPU 與約 510 GB 以上的儲存空間，/work 容量足夠。</p>
+<aside>排序依據是資訊價值除以成本。B 放最後，因為需要自寫訓練，成本最高。Issue 20 也提醒 loss 與 benchmark 可能不同方向，所以 B 不能只看 loss。</aside>
+</section>

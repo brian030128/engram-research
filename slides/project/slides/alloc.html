@@ -1,17 +1,19 @@
-<section id="alloc" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
-<h2 style="font-size:64px;font-weight:700;line-height:1.15">配置比例：純 MoE 不是最佳，但底部很平</h2>
+<section id="alloc" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">1 · SPARSITY ALLOCATION</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15">Pure MoE is not optimal, but the optimum is flat</h2>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;flex:1">
-<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:48px;display:flex;flex-direction:column;gap:24px">
-<p style="font-size:30px;font-weight:700;color:#3D4654">論文報告</p>
-<p style="font-size:64px;font-weight:700;line-height:1.2">ρ ≈ 75–80%</p>
-<p style="font-size:32px;line-height:1.5;color:#3D4654">9.9B 模型的 val loss 由 1.7248 降到 1.7109。ρ≈40% 時約與純 MoE 打平。</p>
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:44px;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:28px;font-weight:700;color:#3D4654">Paper reports</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.2">MoE share ≈ 75–80%</p>
+<p style="font-size:27px;line-height:1.5;color:#3D4654">U-shaped loss at 2e20 and 6e20 FLOPs. At 9.9B, val loss 1.7248 → 1.7109. A 40% MoE share ties pure MoE.</p>
 </div>
-<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:48px;display:flex;flex-direction:column;gap:24px">
-<p style="font-size:30px;font-weight:700;color:#B8501F">本研究判讀</p>
-<p style="font-size:64px;font-weight:700;line-height:1.2">ρ ≈ 70–95%</p>
-<p style="font-size:32px;line-height:1.5;color:#3D4654">這段的點差距很小，圖上最低點約在 85%。穩健結論是「給 Engram 少量預算就有效」。</p>
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:44px;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:28px;font-weight:700;color:#B8501F">Our reading</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.2">≈ 70–95%</p>
+<p style="font-size:27px;line-height:1.5;color:#3D4654">Points in this range are close; the lowest plotted point is near 85%. The robust claim: a small Engram share already helps.</p>
 </div>
 </div>
-<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">來源：論文 §3.1 與 Figure 3；本研究判讀為圖上目測值。</p>
-<aside>不要把 20 到 25% 當成精確常數。另外 §3.2 稱 strict power law，但圖是 x 軸取 log、y 軸線性，較接近對數關係，每增加 10 倍記憶體 loss 約降 0.028。</aside>
+<p style="font-size:27px;line-height:1.5;color:#3D4654"><b>Memory alone:</b> 2.58 × 10⁵ → 10⁷ slots lowers loss about 0.028 per 10× more memory. That is logarithmic, though the paper calls it a “strict power law”.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">Paper §3.1–3.2 and Figure 3; our readings are approximate values off the plot. ρ is the share of the spare budget given to MoE.</p>
+<aside>Ratio held fixed: total to active parameters about 10. Engram-27B uses 74.3 percent. Don’t treat 20 to 25 percent as a precise constant.</aside>
 </section>

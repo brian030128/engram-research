@@ -1,0 +1,16 @@
+<section id="issues" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Inconsistencies to watch in the paper</h2>
+<table style="font-size:24px;width:1664px">
+<tr><th style="width:24%">Where</th><th style="width:76%">Issue</th></tr>
+<tr><td>Abstract vs Table 1</td><td>MMLU +3.4 vs +3.0; +3.4 matches MMLU-Redux, likely a typo</td></tr>
+<tr><td>Table 2 caption</td><td>“Across all metrics”, yet Single NIAH (and CWE at 46k) trail MoE</td></tr>
+<tr><td>§5.2</td><td>“Improves monotonically”, but QA goes 44.0 → 37.5 → 40.5</td></tr>
+<tr><td>§3.2</td><td>“Strict power law” looks logarithmic on the plot</td></tr>
+<tr><td>§3.1</td><td>Optimum stated at 75–80%; lowest plotted point near 85%, flat basin</td></tr>
+<tr><td>§6.3</td><td>“Confirming … primary repository” is stronger than the ablation supports</td></tr>
+<tr><td>Appendix A vs demo</td><td>Layers [2, 15] vs [1, 15]; V4.1 uses zero-indexed [1, 14]</td></tr>
+<tr><td>Appendix A</td><td>“Engram Vocab Size” undefined; 80-dim heads best fit the 5.7B total</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">Tables 1, 2 and 4 are identical in v1 and v2; v2 mainly changed authors, related work and wording.</p>
+<aside>None of these overturns the main result, but they matter when citing numbers. The demo’s layer 15 is probably off by one; the paper’s layer list is one-indexed.</aside>
+</section>

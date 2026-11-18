@@ -1,0 +1,17 @@
+<section id="inference" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">3 · MEMORY AND EFFICIENCY</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">During inference, step by step (DeepSeek-V4.1)</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px">
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px"><h3 style="font-size:30px;font-weight:700">1 · Hash first</h3><p style="font-size:25px;line-height:1.45;color:#3D4654">Before layer 0, every position gets 24 row addresses per Engram layer.</p></div>
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px"><h3 style="font-size:30px;font-weight:700">2 · Fetch rows</h3><p style="font-size:25px;line-height:1.45;color:#3D4654">FP8 rows are dequantized into one 6,144-value memory vector.</p></div>
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px"><h3 style="font-size:30px;font-weight:700">3 · Gate and add</h3><p style="font-size:25px;line-height:1.45;color:#3D4654">At layers 1 and 14, gated memory joins the hidden state.</p></div>
+</div>
+<table style="font-size:25px;width:1664px">
+<tr><th style="width:18%">　</th><th style="width:41%">Prefill (the prompt)</th><th style="width:41%">Decode (one token per step)</th></tr>
+<tr><td>Rows needed</td><td>10k tokens: 240k rows, ~63 MB per layer</td><td>24 rows, ~6.3 KB per layer</td></tr>
+<tr><td>Hiding the fetch</td><td>Plenty of compute to overlap</td><td>Token known only after sampling; layer 1 must fetch during block 0</td></tr>
+<tr><td>Per-sequence state</td><td>Engram keeps only the last 3 token IDs</td><td>Same; the KV cache, by contrast, grows with context</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">V4.1 reference code (read, not run) and tech report. Byte figures are our estimates.</p>
+<aside>The reference code keeps the table split across 8 GPUs and sums partial lookups with one all-reduce; the production system keeps it in host memory and prefetches over RDMA. Decode latency is the least verified part, which is why Experiment C measures p99.</aside>
+</section>

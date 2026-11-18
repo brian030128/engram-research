@@ -1,0 +1,21 @@
+<section id="expdc" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">5 · EXPERIMENT DESIGN</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Experiments D and C</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;flex:1">
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<h3 style="font-size:32px;font-weight:700">D · V4.1 Engram ablation</h3>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Purpose:</b> test the knowledge-store claim on real weights, with Traditional Chinese.</p>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Method:</b> full model vs gate = 0; facts, reading, math, code; e.g. TTQA and TMMLU+; same items in Traditional and Simplified.</p>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Metrics:</b> retention per category, Traditional vs Simplified gap, mean gate.</p>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Decision:</b> if Traditional differs clearly, don’t assume equal benefit.</p>
+</div>
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<h3 style="font-size:32px;font-weight:700">C · Lookup latency</h3>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Purpose:</b> add latency and HBM vs DRAM data the paper lacks.</p>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Method:</b> standalone lookup bench; 10⁵ rows up to memory limit; HBM, DRAM sync, DRAM async; uniform vs real hash traces.</p>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Metrics:</b> p50/p99, tokens/s, PCIe traffic, cache and TLB misses.</p>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Decision:</b> if real traces beat uniform on p99, tiered caching is worth building.</p>
+</div>
+</div>
+<aside>D can’t prove causation, since V4.1 was trained with Engram. It is still the cheapest way to see whether facts and math collapse together and whether Traditional Chinese behaves differently.</aside>
+</section>

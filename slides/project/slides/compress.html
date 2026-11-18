@@ -1,0 +1,20 @@
+<section id="compress" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">2 · CORE PRINCIPLES</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15">Vocabulary compression: merge IDs that mean the same</h2>
+<p style="font-size:28px;line-height:1.5;color:#3D4654">Tokenizers give “Apple” and “ apple” different IDs. Compression maps them to one canonical ID (NFKC, accent stripping, lowercasing, whitespace), so equivalent n-grams share memory.</p>
+<div style="display:flex;gap:48px">
+<table style="font-size:26px;width:820px">
+<tr><th style="width:34%">Tokenizer</th><th style="width:40%">IDs</th><th style="width:26%">Reduction</th></tr>
+<tr><td>DeepSeek-V3</td><td>128,815 → 98,627</td><td>23.44%</td></tr>
+<tr><td>DeepSeek-V4.1</td><td>129,280 → 99,092</td><td>23.35%</td></tr>
+</table>
+<table style="font-size:26px;width:796px">
+<tr><th style="width:40%">Distinct n-grams</th><th style="width:20%">2-gram</th><th style="width:20%">3-gram</th><th style="width:20%">4-gram</th></tr>
+<tr><td>English Wiki</td><td>−17.6%</td><td>−6.5%</td><td>−2.5%</td></tr>
+<tr><td>Trad. Chinese Wiki</td><td>−4.1%</td><td>−1.9%</td><td>−0.9%</td></tr>
+</table>
+</div>
+<p style="font-size:30px;line-height:1.5"><b>A 23% smaller vocabulary does not mean 23% fewer n-grams.</b> None of 35,346 CJK tokens is merged, so Chinese gains little.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">Our measurement. Paper reports 23.43% (§2.2, Appendix C); V4.1 matches its config exactly.</p>
+<aside>We reproduced the paper’s figure and the top merge-group sizes (163, 54, 40, 35). The ablation in Figure 5 shows removing compression keeps about 85 percent of the gain.</aside>
+</section>

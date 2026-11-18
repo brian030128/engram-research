@@ -1,18 +1,18 @@
-<section id="debate" data-transition="fade" style="background:#14213D;color:#F5F3EC;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
-<h2 style="font-size:64px;font-weight:700;line-height:1.15">Engram 真的是「事實知識的主要儲存處」嗎？</h2>
+<section id="debate" data-transition="fade" style="background:#14213D;color:#F5F3EC;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15">Is Engram really the model’s main store of facts?</h2>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;flex:1">
-<div style="display:flex;flex-direction:column;gap:24px">
-<p style="font-size:30px;font-weight:700;color:#F2A679">移除 Engram 時：事實類崩跌</p>
-<p style="font-size:96px;font-weight:700;line-height:1.1">29%</p>
-<p style="font-size:32px;line-height:1.5;color:#D5DAE3">TriviaQA 保留率。但 MATH 也只剩 36%，MGSM 44%。</p>
+<div style="display:flex;flex-direction:column;gap:20px">
+<p style="font-size:28px;font-weight:700;color:#F2A679">Removing Engram: facts collapse</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:96px;font-weight:700;line-height:1.1">29%</p>
+<p style="font-size:30px;line-height:1.5;color:#D5DAE3">of TriviaQA performance kept. But MATH keeps only 36% and MGSM 44%.</p>
 </div>
-<div style="display:flex;flex-direction:column;gap:24px">
-<p style="font-size:30px;font-weight:700;color:#F2A679">加入 Engram 時：事實類增益偏低</p>
-<p style="font-size:96px;font-weight:700;line-height:1.1">+0.2</p>
-<p style="font-size:32px;line-height:1.5;color:#D5DAE3">PopQA 增益；TriviaQA +1.9、TriviaQA-ZH +1.5，都低於中位數。</p>
+<div style="display:flex;flex-direction:column;gap:20px">
+<p style="font-size:28px;font-weight:700;color:#F2A679">Adding Engram: facts gain little</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:96px;font-weight:700;line-height:1.1">+0.2</p>
+<p style="font-size:30px;line-height:1.5;color:#D5DAE3">on PopQA. TriviaQA +1.9 and TriviaQA-ZH +1.5 are also below the median.</p>
 </div>
 </div>
-<p style="font-size:36px;font-weight:500;line-height:1.4">較保守的解讀：backbone 與 Engram 共同適應，移除後才失能。</p>
-<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#AEB7C6">來源：論文 Figure 6、Table 1。解讀為本研究推論，待實驗 D 檢驗。</p>
-<aside>論文自己也承認這個消融有 training-inference inconsistency。這不代表論文錯了，而是這個證據無法區分「儲存知識」和「共同適應」。</aside>
+<p style="font-size:34px;font-weight:600;line-height:1.4">A more cautious reading: the backbone and Engram co-adapted, so removing either breaks the other.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#AEB7C6">Paper Figure 6 and Table 1. The interpretation is ours; Experiment D tests it.</p>
+<aside>The paper itself notes this ablation has a training–inference inconsistency. That doesn’t make the paper wrong; it means this evidence can’t separate “stores knowledge” from “co-adapted”.</aside>
 </section>

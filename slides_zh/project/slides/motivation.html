@@ -1,0 +1,22 @@
+<section id="motivation" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-size:64px;font-weight:700;line-height:1.15">背景：模型越大越強，但越大越貴</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;flex:1">
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:44px;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:28px;font-weight:700;color:#3D4654">Dense</p>
+<h3 style="font-size:40px;font-weight:700;line-height:1.3">參數多一倍，計算也多一倍</h3>
+<p style="font-size:28px;line-height:1.5;color:#3D4654">容量和成本綁在一起。</p>
+</div>
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:44px;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:28px;font-weight:700;color:#3D4654">MoE</p>
+<h3 style="font-size:40px;font-weight:700;line-height:1.3">參數很多，每次只用一部分</h3>
+<p style="font-size:28px;line-height:1.5;color:#3D4654">已是前沿模型標準作法。但不論什麼內容，都還是靠「計算」處理。</p>
+</div>
+<div style="background:#FFFFFF;border:2px solid #B8501F;border-radius:16px;padding:44px;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:28px;font-weight:700;color:#B8501F">缺口</p>
+<h3 style="font-size:40px;font-weight:700;line-height:1.3">沒有「查」的能力</h3>
+<p style="font-size:28px;line-height:1.5;color:#3D4654">有些內容根本不需要算，查得到就好。</p>
+</div>
+</div>
+<p style="font-size:32px;line-height:1.5;color:#3D4654">語言裡混著兩種工作：<b>需要推理的</b>（理解、計算、組合）與<b>固定不變的</b>（人名、地名、慣用語）。</p>
+<aside>從擴展的歷史講起。Dense 模型的容量和計算綁在一起；MoE 讓參數多、但每個 token 只啟用一部分，因此成為主流。論文的觀察是：MoE 仍然只有「條件式計算」，Transformer 從來沒有原生的查表操作，所以固定知識也只能用計算模擬出來。</aside>
+</section>

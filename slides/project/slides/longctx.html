@@ -1,0 +1,15 @@
+<section id="longctx" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">1 · ISO-COMPARISON</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15">Long context: bigger gains, with caveats</h2>
+<table style="font-size:27px;width:1664px">
+<tr><th style="width:28%">RULER at 32k</th><th style="width:18%">MoE 50k</th><th style="width:18%">Engram 41k</th><th style="width:18%">46k, iso-loss</th><th style="width:18%">50k, iso-FLOPs</th></tr>
+<tr><td>Multi-query NIAH</td><td>84.2</td><td>89.5</td><td>97.0</td><td>97.0</td></tr>
+<tr><td>Variable tracking</td><td>77.0</td><td>83.2</td><td>87.2</td><td>89.0</td></tr>
+<tr><td>Single NIAH</td><td>100.0</td><td>99.6</td><td>97.6</td><td>99.3</td></tr>
+<tr><td>Common words</td><td>4.5</td><td>3.8</td><td>4.3</td><td>5.9</td></tr>
+<tr><td>QA</td><td>34.5</td><td>44.0</td><td>37.5</td><td>40.5</td></tr>
+</table>
+<p style="font-size:28px;line-height:1.5;color:#3D4654">The paper reads this as attention freed for global context. Not every metric improves: Single NIAH stays below MoE, and QA does not rise steadily with training.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">Paper v2 Table 2. Checkpoints are pre-training steps before a 5,000-step, 32k-context extension.</p>
+<aside>The 46k checkpoint has the same pre-training loss as MoE at 50k, which makes it a fair iso-loss comparison. The paper’s caption says Engram outperforms “across all metrics”, which Single NIAH contradicts.</aside>
+</section>

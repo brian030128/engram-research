@@ -1,5 +1,5 @@
-<section id="what" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Noto Sans TC', Arial, sans-serif;padding:56px 128px 96px;display:flex;flex-direction:column;gap:16px">
-<h2 style="font-size:52px;font-weight:700;line-height:1.15">資料流程：先查表，再由 hidden state 決定採納多少</h2>
-<img src="/_blob/bdb4a8f6a92cc6a4fa6e9ff1751587da" alt="Engram 資料流程圖：Token IDs 經 tokenizer 壓縮、suffix N-gram、multi-head hash 查 sparse memory tables，串接後經 key 與 value 投影，由 hidden state 計算 gate，最後以 residual 相加回 hidden state，再進入 Attention 與 MoE" style="width:1664px;height:800px;object-fit:contain;background:#FFFFFF">
-<aside>上半部只依 token ID，所以位址在 forward 之前就知道，這是預取的基礎。中段的 gate 依當前 hidden state 決定採納多少。灰色的 ShortConv 在 V4.1 已被移除。</aside>
+<section id="what" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:56px 128px 96px;display:flex;flex-direction:column;gap:16px">
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:52px;font-weight:700;line-height:1.15">Full data flow: Token IDs → hash → lookup → gating → hidden state</h2>
+<img src="/_blob/bdb4a8f6a92cc6a4fa6e9ff1751587da" alt="Engram data flow: token IDs pass through tokenizer compression, suffix n-grams and multi-head hashing to sparse memory tables; the concatenated memory feeds key and value projections; the hidden state computes a gate; the gated value is added back to the hidden state before attention and MoE" style="width:1664px;height:800px;object-fit:contain;background:#FFFFFF">
+<aside>The top phase depends only on token IDs, so addresses are known before the forward pass: that is what makes prefetching possible. The middle phase is context-dependent. The grey ShortConv box is dropped in DeepSeek-V4.1. Shapes come from our trace of the official demo.</aside>
 </section>

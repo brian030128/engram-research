@@ -1,11 +1,12 @@
-<section id="collide" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Noto Sans TC', Arial, sans-serif;padding:72px 128px 110px;display:flex;flex-direction:row;gap:64px;align-items:center">
-<div style="width:680px;display:flex;flex-direction:column;gap:36px">
-<h2 style="font-size:60px;font-weight:700;line-height:1.15">實驗 A：碰撞是常態，頻率決定誰佔位</h2>
-<p style="font-size:30px;line-height:1.5;color:#3D4654"><b>Hash 品質好：</b>60 組設定下，實測與隨機 hash 理論的單 head 差距最多 0.12 個百分點。</p>
-<p style="font-size:30px;line-height:1.5;color:#3D4654"><b>高負載時：</b>出現 100 次以上的 3-gram 平均佔 7.2/8 個 row；只出現 1 次的佔 0 個。</p>
-<p style="font-size:30px;line-height:1.5;color:#3D4654"><b>含意：</b>罕見的領域術語不易取得專屬表示。</p>
+<section id="collide" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:72px 128px 110px;display:flex;flex-direction:row;gap:56px;align-items:center">
+<div style="width:700px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">2 · EXPERIMENT A</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:52px;font-weight:700;line-height:1.15">Collisions are the norm; frequency decides who wins</h2>
+<p style="font-size:26px;line-height:1.5;color:#3D4654"><b>Hash quality is good:</b> across 60 settings, measured rates are within 0.12 points of random-hash theory.</p>
+<p style="font-size:26px;line-height:1.5;color:#3D4654"><b>At real scale:</b> 3-gram types likely far exceed rows, so nearly every n-gram collides on every head (rough extrapolation).</p>
+<p style="font-size:26px;line-height:1.5;color:#3D4654"><b>Under heavy load:</b> 3-grams seen 100+ times top 7.2 of their 8 rows on average; those seen once top none.</p>
 </div>
-<img src="/_blob/610542dbb33d4d57e09926e2ea634bc0" alt="散佈圖與理論曲線：distinct n-gram 的碰撞比例隨負載上升，實測值與單 head、8 head 的隨機 hash 理論曲線重合" style="width:984px;height:600px;object-fit:contain;background:#FCFCFB">
-<p style="position:absolute;left:128px;bottom:48px;width:1664px;font-size:24px;color:#59626F">本研究實測，共 5,356 萬 tokens。僅為語料統計，未量測訓練後的表示品質。</p>
-<aside>論文沒有碰撞的量化分析，所以我們先做。各 head 只差 modulus 但沒有看到相關性問題。外推到實際訓練規模後，3-gram 種類遠多於 row，所以多個 head 的角色是讓高頻 n-gram 佔優勢，而不是消除碰撞。外推不確定性很大，只看量級。</aside>
+<img src="/_blob/610542dbb33d4d57e09926e2ea634bc0" alt="Scatter plot with theory curves: share of distinct n-grams colliding rises with load factor; measured one-head and all-8-head points sit on the random-hash theory curves" style="width:964px;height:600px;object-fit:contain;background:#FCFCFB">
+<p style="position:absolute;left:128px;bottom:48px;width:1664px;font-size:24px;color:#59626F">Our measurement on 53.6M tokens of English and Chinese Wikipedia and Bitext support data. Text statistics only, not trained representation quality.</p>
+<aside>The paper gives no quantitative collision analysis, so we ran one. Sharing one mix value across heads caused no detectable correlation. Implication: rare domain terms struggle to get their own rows when the table is trained on general text.</aside>
 </section>

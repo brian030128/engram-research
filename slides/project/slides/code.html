@@ -1,0 +1,17 @@
+<section id="code" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">5 · CODE AND NEXT STEPS</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Official demo: main classes and data flow</h2>
+<table style="font-size:25px;width:1664px">
+<tr><th style="width:32%">Class / function</th><th style="width:68%">Role</th></tr>
+<tr><td>EngramConfig, BackBoneConfig</td><td>Engram settings and the mock backbone</td></tr>
+<tr><td>CompressedTokenizer</td><td>Builds the token → canonical ID table</td></tr>
+<tr><td>find_next_prime</td><td>Picks unused primes as table sizes</td></tr>
+<tr><td>NgramHashMapping</td><td>Per-layer multipliers; computes hash IDs</td></tr>
+<tr><td>MultiHeadEmbedding</td><td>One embedding table with per-head offsets</td></tr>
+<tr><td>ShortConv</td><td>Per-branch RMSNorm, depthwise conv, SiLU</td></tr>
+<tr><td>Engram</td><td>Lookup, gating, output</td></tr>
+<tr><td>TransformerBlock</td><td>Mock attention and MoE; inserts Engram at chosen layers</td></tr>
+</table>
+<p style="font-size:25px;font-family:'Courier New', monospace;background:#EEF1F5;padding:18px;border-radius:12px">ids → hash() → embedding + offsets → e → key/value + gate per branch → value + ShortConv → + hidden</p>
+<aside>engram_demo_v1.py, 422 lines, repo commit fb7f84a. Our hash implementation matches the demo’s on all 16 heads.</aside>
+</section>

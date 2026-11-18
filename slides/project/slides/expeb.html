@@ -1,0 +1,21 @@
+<section id="expeb" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">5 · EXPERIMENT DESIGN</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Experiments E and B</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;flex:1">
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<h3 style="font-size:32px;font-weight:700">E · Frozen-backbone updates</h3>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Purpose:</b> answer “can memory be updated alone?” against RAG and LoRA.</p>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Method:</b> fictional support FAQ; trained vs unseen phrasings; table-only training vs LoRA vs RAG.</p>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Metrics:</b> accuracy on trained and reworded questions, cross-script accuracy, drift (KL), update time and size.</p>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Decision:</b> only worth productizing if reworded questions approach RAG.</p>
+</div>
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:36px;display:flex;flex-direction:column;gap:14px">
+<h3 style="font-size:32px;font-weight:700">B · Small-scale allocation</h3>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Purpose:</b> check the U-shape at a scale we can afford.</p>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Method:</b> small MoE at fixed total and active parameters; MoE share 100, 90, 80, 70, 50, 40%; 3 seeds each.</p>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Metrics:</b> val loss mean ± std, key benchmarks, training tokens/s.</p>
+<p style="font-size:24px;line-height:1.45;color:#3D4654"><b>Decision:</b> reproduced only if the gain at 80% exceeds seed-to-seed spread.</p>
+</div>
+</div>
+<aside>For E, fictional facts make sure the model couldn’t already know them. For B, a small scale may not show the U-shape at all, which would itself be useful to know.</aside>
+</section>

@@ -1,0 +1,15 @@
+<section id="update" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">4 · COMPARISON</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Can Engram memory be updated on its own?</h2>
+<p style="font-size:30px;line-height:1.45"><b>Short answer:</b> storage can be separated, but knowledge can’t be edited directly. It needs training, and the paper doesn’t test it.</p>
+<table style="font-size:25px;width:1664px">
+<tr><th style="width:42%">Question</th><th style="width:58%">Answer</th></tr>
+<tr><td>Tested in the paper?</td><td>No; only joint training is described</td></tr>
+<tr><td>Write one fact directly?</td><td>No: rows are trained vectors shared by many n-grams</td></tr>
+<tr><td>Train only the table, backbone frozen?</td><td>Possible in principle; one third-party report</td></tr>
+<tr><td>Side effects on other knowledge?</td><td>Likely, since rows are shared</td></tr>
+</table>
+<p style="font-size:26px;line-height:1.5;color:#3D4654"><b>ENGRAFT (third party, unverified):</b> on Qwen3.8-Flash-Next, training table rows only gave 0.841 exact answers on 841 held-out sentences (base 0.005). It failed across languages, and only 4 of 83 two-fact questions got both right.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">Engram issue #26 and github.com/fulvian/engraft-ngram. Not peer reviewed, built with Claude Code, nothing measured on V4.1; we have not reproduced it.</p>
+<aside>The paper uses the word editable only for non-parametric memory such as REALM and RETRO, not for Engram. Experiment E tests updates directly against RAG and LoRA.</aside>
+</section>

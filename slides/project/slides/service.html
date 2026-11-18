@@ -1,0 +1,25 @@
+<section id="service" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">4 · COMPARISON</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Domain Q&amp;A and customer service: value and limits</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;flex:1">
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:34px;font-weight:700">Potential value</h3>
+<ul style="font-size:26px;line-height:1.55;color:#3D4654">
+<li>A base model with Engram may be stronger overall, including on long context</li>
+<li>Product names and set phrases fit its local patterns</li>
+<li>No extra context tokens or retrieval service</li>
+</ul>
+</div>
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:34px;font-weight:700">Limits</h3>
+<ul style="font-size:26px;line-height:1.55;color:#3D4654">
+<li>No source citations, a compliance problem</li>
+<li>Updates need training: bad for prices, stock</li>
+<li>Sensitive to rephrasing</li>
+<li>No released training code</li>
+</ul>
+</div>
+</div>
+<p style="font-size:26px;font-family:'Courier New', monospace;background:#EEF1F5;padding:20px;border-radius:12px">Question → RAG (daily index, citations) → base model (Engram or not: decide by testing) → LoRA / fine-tuning for tone and flow</p>
+<aside>Recommended architecture: keep RAG as the knowledge layer. Whether the base model includes Engram should be decided by measurement, which is what Experiment D starts on.</aside>
+</section>

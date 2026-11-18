@@ -1,0 +1,28 @@
+<section id="throughput" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">3 · MEMORY AND EFFICIENCY</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Inference cost: what was measured</h2>
+<div style="display:flex;gap:48px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:30px;font-weight:700">Paper: 100B table in host DRAM</h3>
+<table style="font-size:25px">
+<tr><th style="width:28%">Backbone</th><th style="width:26%">Baseline</th><th style="width:26%">+ Engram</th><th style="width:20%">Change</th></tr>
+<tr><td>Dense-4B</td><td>9,031.62</td><td>8,858.28</td><td>−1.92%</td></tr>
+<tr><td>Dense-8B</td><td>6,315.52</td><td>6,140.02</td><td>−2.78%</td></tr>
+</table>
+<p style="font-size:24px;line-height:1.45;color:#3D4654">Tokens/s. H800, nano-vLLM, 512 sequences of 100–1,024 tokens, Engram at block 2.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:30px;font-weight:700">Ours: can a cache of hot rows work?</h3>
+<table style="font-size:25px">
+<tr><th style="width:52%">Hit rate, top 1% of rows</th><th style="width:16%">2-g</th><th style="width:16%">3-g</th><th style="width:16%">4-g</th></tr>
+<tr><td>English Wiki</td><td>65.7%</td><td>28.6%</td><td>13.5%</td></tr>
+<tr><td>Support, own hot set</td><td>93.4%</td><td>79.5%</td><td>63.6%</td></tr>
+<tr><td>Support, Wiki hot set</td><td>50.4%</td><td>10.8%</td><td>2.3%</td></tr>
+</table>
+<p style="font-size:24px;line-height:1.45;color:#3D4654">16M rows per head; hot set from first 80% of text, tested on the rest.</p>
+</div>
+</div>
+<p style="font-size:27px;line-height:1.5"><b>Our estimate:</b> bandwidth isn’t the bottleneck (~57 MB/s per layer at 9,000 tokens/s); memory capacity and random-access latency are. Hot sets depend on the workload.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">Paper v2 Table 4; cache simulation is our measurement on Wikipedia and templated Bitext support data.</p>
+<aside>Higher-order n-grams cache poorly, and V4.1 reads all three orders for every token. A hot set learned on general text serves customer-support traffic badly.</aside>
+</section>

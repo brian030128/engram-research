@@ -1,21 +1,11 @@
-<section id="verdict" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
-<h2 style="font-size:64px;font-weight:700;line-height:1.15">研究判斷</h2>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;flex:1">
-<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:48px;display:flex;flex-direction:column;gap:24px">
-<p style="font-size:30px;font-weight:700;color:#B8501F">架構成立</p>
-<h3 style="font-size:40px;font-weight:700;line-height:1.3">已在同參數、同 FLOPs 下勝出，並進入 V4.1</h3>
-<p style="font-size:30px;line-height:1.5;color:#3D4654">27 項 benchmark 全部提升，中位數 +2.5 分，但未附誤差範圍。</p>
+<section id="verdict" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15">At a glance: five judgments</h2>
+<div style="display:flex;flex-direction:column;gap:28px">
+<p style="font-size:30px;line-height:1.45"><b style="color:#B8501F">1 · The architecture works and ships.</b> It beats an iso-parameter, iso-FLOPs MoE on all 27 benchmarks and is used in DeepSeek-V4.1-Flash.</p>
+<p style="font-size:30px;line-height:1.45"><b style="color:#B8501F">2 · Gains are steady but moderate.</b> Median +2.5 points with no error bars; going from Dense to MoE gives a median +9.5.</p>
+<p style="font-size:30px;line-height:1.45"><b style="color:#B8501F">3 · “Main store of facts” is weakly supported.</b> Removing Engram hurts math about as much as factual recall.</p>
+<p style="font-size:30px;line-height:1.45"><b style="color:#B8501F">4 · It is not a RAG replacement.</b> No source citations, no update path without training, and keys of only 2–4 tokens.</p>
+<p style="font-size:30px;line-height:1.45"><b style="color:#B8501F">5 · Traditional Chinese is untested.</b> None of 2,171 Traditional/Simplified token pairs is merged by compression.</p>
 </div>
-<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:48px;display:flex;flex-direction:column;gap:24px">
-<p style="font-size:30px;font-weight:700;color:#B8501F">不是 RAG</p>
-<h3 style="font-size:40px;font-weight:700;line-height:1.3">客服與知識庫仍應以 RAG 為主</h3>
-<p style="font-size:30px;line-height:1.5;color:#3D4654">Engram 沒有來源引用，也沒有不經訓練的更新路徑。</p>
-</div>
-<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:48px;display:flex;flex-direction:column;gap:24px">
-<p style="font-size:30px;font-weight:700;color:#B8501F">繁中未知</p>
-<h3 style="font-size:40px;font-weight:700;line-height:1.3">繁簡在記憶層幾乎是兩套 key</h3>
-<p style="font-size:30px;line-height:1.5;color:#3D4654">需要在真實權重上直接驗證，不能沿用論文結果。</p>
-</div>
-</div>
-<aside>先講結論。第一欄是論文最強的部分；第二欄回答 Issue 對 RAG 的問題；第三欄是本研究新發現，也是下一步實驗的主因。</aside>
+<aside>Lead with the conclusions; the rest of the deck supports each one. Judgment 1 is the paper’s strongest result; 3 and 5 are where our own analysis adds something new.</aside>
 </section>

@@ -1,0 +1,29 @@
+<section id="demo" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">5 · CODE AND NEXT STEPS</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">What the demo implements, and what it doesn’t</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;flex:1">
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="CheckCircle" style="color:#14213D;width:40px;height:40px"></x-icon><h3 style="font-size:34px;font-weight:700">Implemented</h3></div>
+<ul style="font-size:26px;line-height:1.55;color:#3D4654">
+<li>Tokenizer compression</li>
+<li>Multi-head hashing, prime tables</li>
+<li>Gating with signed sqrt</li>
+<li>Per-branch keys</li>
+<li>Short convolution</li>
+</ul>
+</div>
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Warning" style="color:#B8501F;width:40px;height:40px"></x-icon><h3 style="font-size:34px;font-weight:700">Missing or mocked</h3></div>
+<ul style="font-size:26px;line-height:1.55;color:#3D4654">
+<li>Attention, MoE, mHC: mocked</li>
+<li>Loss, optimizer, training loop</li>
+<li>Zero-init conv (paper says zero)</li>
+<li>Table sharding, offload, prefetch</li>
+<li>Pre-trained weights</li>
+</ul>
+</div>
+</div>
+<p style="font-size:27px;line-height:1.5"><b>We ran it unmodified on CPU:</b> 16.9 s, 6.39 GB peak, 667M parameters per Engram module.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">Only change: tokenizer loaded locally with trust_remote_code=False. Measured conv weight mean |w| ≈ 0.25 at init.</p>
+<aside>From reading the code, hash IDs come from NumPy and are never moved to the model’s device, so a GPU run would likely fail; we didn’t test that. Community PRs 13 to 15 address caching and vectorization but are unmerged.</aside>
+</section>

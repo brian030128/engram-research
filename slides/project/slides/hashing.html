@@ -1,29 +1,17 @@
-<section id="hashing" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
-<h2 style="font-size:64px;font-weight:700;line-height:1.15">為什麼要 hash？可能的片語太多</h2>
-<div style="display:flex;gap:64px;align-items:center">
-<div style="flex:1;display:flex;flex-direction:column;gap:12px">
-<p style="font-size:104px;font-weight:700;line-height:1.1;color:#B8501F">9.7 × 10¹⁴</p>
-<p style="font-size:30px;line-height:1.4;color:#3D4654">可能的三詞組合（99,092³）</p>
+<section id="hashing" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">2 · CORE PRINCIPLES</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15">Multi-head hashing: too many n-grams for one row each</h2>
+<div style="display:flex;gap:56px;align-items:center">
+<div style="flex:1"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:88px;font-weight:700;line-height:1.1;color:#B8501F">9.7 × 10¹⁴</p><p style="font-size:26px;color:#3D4654">possible 3-grams (99,092³)</p></div>
+<x-shape kind="arrow-right" style="width:110px;height:55px;background:#C8CED8"></x-shape>
+<div style="flex:1"><p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:88px;font-weight:700;line-height:1.1">~16 million</p><p style="font-size:26px;color:#3D4654">rows per head (V4.1)</p></div>
 </div>
-<x-shape kind="arrow-right" style="width:120px;height:60px;background:#C8CED8"></x-shape>
-<div style="flex:1;display:flex;flex-direction:column;gap:12px">
-<p style="font-size:104px;font-weight:700;line-height:1.1">約 1,600 萬</p>
-<p style="font-size:30px;line-height:1.4;color:#3D4654">V4.1 每個 head 的頁數</p>
+<p style="font-size:28px;font-family:'Courier New', monospace;background:#EEF1F5;padding:20px;border-radius:12px">mix = (x′t × m0) XOR (x′t−1 × m1) XOR …    row = mix mod prime_head</p>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px">
+<p style="font-size:26px;line-height:1.5;color:#3D4654"><b>Cost:</b> many n-grams share a row and their vectors blend.</p>
+<p style="font-size:26px;line-height:1.5;color:#3D4654"><b>Fix 1:</b> 8 heads give 8 addresses, rarely all taken by one rival.</p>
+<p style="font-size:26px;line-height:1.5;color:#3D4654"><b>Fix 2:</b> the gate suppresses rows that don’t fit.</p>
 </div>
-</div>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
-<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
-<h3 style="font-size:36px;font-weight:700">代價</h3>
-<p style="font-size:28px;line-height:1.5;color:#3D4654">很多片語擠在同一頁，內容混在一起。</p>
-</div>
-<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
-<h3 style="font-size:36px;font-weight:700">緩解：8 個 head</h3>
-<p style="font-size:28px;line-height:1.5;color:#3D4654">每個片語拿 8 個頁碼，不太可能 8 頁都被同一對手佔住。</p>
-</div>
-<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:16px">
-<h3 style="font-size:36px;font-weight:700">緩解：gate</h3>
-<p style="font-size:28px;line-height:1.5;color:#3D4654">不合語境的雜訊，由上下文分數壓低。</p>
-</div>
-</div>
-<aside>不可能給每個片語一頁，所以用 hash 對應到有限的頁數。本研究的實驗 A 也發現：常見片語幾乎總能在某幾頁佔優勢，罕見片語通常每頁都被蓋過。下一頁的流程圖把這四頁的概念串在一起。</aside>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">In both official codebases the 8 heads share one mix value and differ only by prime modulus (paper §2.2: “K distinct hash heads”).</p>
+<aside>Each table size is a distinct prime, chosen in order and never reused. The multipliers differ per layer.</aside>
 </section>

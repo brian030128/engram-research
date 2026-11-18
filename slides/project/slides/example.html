@@ -1,15 +1,16 @@
-<section id="example" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Noto Sans TC', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:36px">
-<h2 style="font-size:60px;font-weight:700;line-height:1.15">例子：模型讀到 “Great” 時發生什麼事</h2>
-<p style="font-size:30px;color:#3D4654">句子：Only Alexander the <b>Great</b> could tame the horse.</p>
-<table style="font-size:28px;width:1664px">
-<tr><th style="width:24%">步驟</th><th style="width:38%">做什麼</th><th style="width:38%">這個例子</th></tr>
-<tr><td>① 看最後幾個詞</td><td>取出結尾在這裡的 2、3-gram</td><td>“the Great”、“Alexander the Great”</td></tr>
-<tr><td>② 換成頁碼</td><td>用 hash 算出表裡的位置</td><td>每個片語得到 8 個頁碼</td></tr>
-<tr><td>③ 翻頁取資料</td><td>取出向量並接在一起</td><td>得到一個「記憶向量」</td></tr>
-<tr><td>④ 問上下文</td><td>和模型目前的理解比較，算出 0～1 分數</td><td>上下文在講人物，分數高</td></tr>
-<tr><td>⑤ 加回去</td><td>記憶 × 分數，加到模型狀態上</td><td>提早知道這是亞歷山大大帝</td></tr>
+<section id="example" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:112px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">2 · CORE PRINCIPLES</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.15">Walkthrough: what happens at the token “Great”</h2>
+<p style="font-size:28px;color:#3D4654">Sentence: Only Alexander the <b>Great</b> could tame the horse.</p>
+<table style="font-size:26px;width:1664px">
+<tr><th style="width:24%">Step</th><th style="width:38%">What it does</th><th style="width:38%">In this example</th></tr>
+<tr><td>1 · Last few tokens</td><td>Take the n-grams ending here</td><td>“the Great”, “Alexander the Great”</td></tr>
+<tr><td>2 · Addresses</td><td>Hash each n-gram</td><td>8 row addresses per n-gram</td></tr>
+<tr><td>3 · Read rows</td><td>Fetch and concatenate</td><td>One memory vector</td></tr>
+<tr><td>4 · Ask the context</td><td>Compare with the hidden state: a 0–1 score</td><td>Context is about a person: high</td></tr>
+<tr><td>5 · Add it in</td><td>Memory × score, added to the state</td><td>Model knows early who this is</td></tr>
 </table>
-<p style="font-size:28px;line-height:1.5;color:#3D4654">若是 “the Great Wall”，查到的「人物」記憶不合語境，第④步的分數就會壓低它。</p>
-<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">論文 Figure 7 的 gate 視覺化顯示，分數正好在 “Alexander the Great” 這類片語結尾特別高。</p>
-<aside>第④步是 context-aware gating。速查表只看最後幾個詞，難免查到不合語境或被其他片語混雜的內容，所以要讓模型自己決定採用多少。之後模型照常進入 attention 和 MoE。</aside>
+<p style="font-size:26px;line-height:1.5;color:#3D4654">In “the Great Wall”, a person-like memory doesn’t fit, so step 4 scores it low.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">The paper’s Figure 7 shows the gate peaking at the end of phrases such as “Alexander the Great” and “the Milky Way”.</p>
+<aside>Step 4 is context-aware gating. Because the table only sees the last few tokens, it can return rows that don’t fit or that are mixed with other n-grams; the gate lets the model decide how much to use. Attention and MoE then run as usual.</aside>
 </section>

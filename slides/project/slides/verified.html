@@ -1,24 +1,27 @@
-<section id="verified" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
-<h2 style="font-size:64px;font-weight:700;line-height:1.15">效能主張：哪些已驗證，哪些還沒有</h2>
+<section id="verified" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">3 · MEMORY AND EFFICIENCY</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15">Verified results vs unverified claims</h2>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;flex:1">
-<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:48px;display:flex;flex-direction:column;gap:24px">
-<div style="display:flex;gap:16px;align-items:center"><x-icon name="CheckCircle" style="color:#14213D;width:44px;height:44px"></x-icon><h3 style="font-size:40px;font-weight:700">論文已測量</h3></div>
-<ul style="font-size:30px;line-height:1.6;color:#3D4654">
-<li>100B 表放 host DRAM，吞吐下降 1.92–2.78%</li>
-<li>同參數、同 FLOPs 的 benchmark 提升</li>
-<li>Single-module 插入層掃描</li>
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:44px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="CheckCircle" style="color:#14213D;width:44px;height:44px"></x-icon><h3 style="font-size:38px;font-weight:700">Measured by the paper</h3></div>
+<ul style="font-size:27px;line-height:1.6;color:#3D4654">
+<li>Under 3% throughput loss, 100B table in DRAM</li>
+<li>Iso-parameter, iso-FLOPs benchmark gains</li>
+<li>Layer-placement sweep and ablations</li>
+<li>Effective depth (CKA, LogitLens)</li>
 </ul>
 </div>
-<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:48px;display:flex;flex-direction:column;gap:24px">
-<div style="display:flex;gap:16px;align-items:center"><x-icon name="Warning" style="color:#B8501F;width:44px;height:44px"></x-icon><h3 style="font-size:40px;font-weight:700">未經驗證</h3></div>
-<ul style="font-size:30px;line-height:1.6;color:#3D4654">
-<li>MoE backbone 上的 offload 開銷</li>
-<li>p50/p99 與首字延遲</li>
-<li>HBM 與 DRAM 直接比較</li>
-<li>NVMe 分層與實際快取命中率</li>
+<div style="background:#FFFFFF;border:1px solid #DDE1E7;border-radius:16px;padding:44px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;gap:16px;align-items:center"><x-icon name="Warning" style="color:#B8501F;width:44px;height:44px"></x-icon><h3 style="font-size:38px;font-weight:700">Not yet verified</h3></div>
+<ul style="font-size:27px;line-height:1.6;color:#3D4654">
+<li>Offload cost on an MoE backbone</li>
+<li>Two modules, as in the real model</li>
+<li>p50/p99 and first-token latency</li>
+<li>Direct HBM vs DRAM comparison</li>
+<li>NVMe tiering and real cache hit rates</li>
 </ul>
 </div>
 </div>
-<p style="font-size:30px;line-height:1.5;color:#3D4654">本研究模擬：熱門集依賴工作負載。客服 3-gram 用自身熱門 1% row 命中 79.5%，改用維基熱門集只有 10.8%。</p>
-<aside>吞吐實驗刻意用 Dense backbone 與單一 Engram 層，與正式模型 MoE 加兩個模組不同。O(1) 是演算法複雜度，不等於固定延遲。快取模擬的客服資料是模板式英文，偏斜可能偏高。</aside>
+<p style="font-size:27px;line-height:1.5;color:#3D4654">Also: all gains are single reported values, and we found no complete independent reproduction.</p>
+<aside>The throughput test deliberately used dense backbones to avoid expert-parallel communication, so it differs from the production setup. The paper’s line that a fully optimized system would be negligible is phrased as “strongly suggests”.</aside>
 </section>

@@ -1,14 +1,16 @@
-<section id="compare" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
-<h2 style="font-size:64px;font-weight:700;line-height:1.15">與既有技術：用途不同，不是替代</h2>
-<table style="font-size:28px;width:1664px">
-<tr><th style="width:22%">　</th><th style="width:26%">Engram</th><th style="width:26%">RAG</th><th style="width:26%">LoRA / Fine-tuning</th></tr>
-<tr><td>查詢依據</td><td>最後 2～4 個 token</td><td>問題與文件的相關性</td><td>無查詢</td></tr>
-<tr><td>更新知識</td><td>需要梯度訓練</td><td>更新索引</td><td>再訓練</td></tr>
-<tr><td>可追溯來源</td><td>否</td><td>是</td><td>否</td></tr>
-<tr><td>改寫問法</td><td>n-gram 不同就不命中</td><td>語意檢索可涵蓋</td><td>視訓練而定</td></tr>
-<tr><td>最適合</td><td>基礎模型預訓練</td><td>動態、可查證的知識</td><td>風格與領域行為</td></tr>
+<section id="compare" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">4 · COMPARISON</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15">Engram vs RAG vs LoRA vs fine-tuning</h2>
+<table style="font-size:25px;width:1664px">
+<tr><th style="width:16%">　</th><th style="width:21%">Engram</th><th style="width:21%">RAG</th><th style="width:21%">LoRA</th><th style="width:21%">Fine-tuning</th></tr>
+<tr><td>What it is</td><td>N-gram table inside the model</td><td>Document search outside</td><td>Low-rank weight delta</td><td>Updated weights</td></tr>
+<tr><td>Retrieval key</td><td>Last 2–4 tokens, exact</td><td>Query–document relevance</td><td>None</td><td>None</td></tr>
+<tr><td>Updating knowledge</td><td>Needs gradient training</td><td>Update the index</td><td>Retrain adapter</td><td>Retrain</td></tr>
+<tr><td>Cites sources</td><td>No</td><td>Yes</td><td>No</td><td>No</td></tr>
+<tr><td>Uses context</td><td>No</td><td>Yes</td><td>No</td><td>No</td></tr>
+<tr><td>Reworded questions</td><td>Different n-grams miss</td><td>Semantic search copes</td><td>Depends on training</td><td>Depends on training</td></tr>
+<tr><td>Best for</td><td>Base-model pre-training</td><td>Changing, citable facts</td><td>Style, task tuning</td><td>Deep domain adaptation</td></tr>
 </table>
-<p style="font-size:32px;line-height:1.5;color:#3D4654"><b>能否獨立更新？</b>論文未驗證。第三方在其他模型上回報只訓練表的正確率 0.841，但對語言與措辭敏感（未經本研究重現）。</p>
-<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">比較為本研究依技術特性整理，並非論文實驗。第三方資料：ENGRAFT，Qwen3.8-Flash-Next。</p>
-<aside>客服建議：RAG 為主，基礎模型是否含 Engram 以實測決定，語氣與流程用 LoRA 或 fine-tuning。ENGRAFT 非同儕審查，作者也揭露用 Claude Code 製作，本報告也用 Claude 撰寫，因此不能視為完全獨立的佐證。</aside>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">Our synthesis from each technique’s design; the paper does not compare against RAG or LoRA.</p>
+<aside>Both Engram and RAG are lookups, but at different levels: Engram returns an unreadable vector per token inside the model; RAG returns readable, citable text before generation. They may complement each other, since Engram improves long-context use, but that combination is untested.</aside>
 </section>

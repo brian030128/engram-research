@@ -1,20 +1,23 @@
-<section id="separate" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Noto Sans TC', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
-<h2 style="font-size:64px;font-weight:700;line-height:1.15">核心想法：表可以很大，每次只取一點點</h2>
-<div style="display:flex;gap:64px;align-items:center;flex:1">
-<div style="flex:1;display:flex;flex-direction:column;gap:16px">
-<p style="font-size:120px;font-weight:700;line-height:1.1;color:#B8501F">196.6B</p>
-<p style="font-size:32px;line-height:1.4;color:#3D4654">V4.1 兩個模組的 Engram 參數</p>
+<section id="separate" data-transition="fade" style="background:#FBFBF8;color:#14213D;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<p style="font-size:26px;font-weight:700;color:#B8501F">1 · ARCHITECTURE</p>
+<h2 style="font-family:'Space Grotesk', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.15">Parameters vs FLOPs: why lookup is nearly free</h2>
+<div style="display:flex;gap:64px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:32px;font-weight:600;font-family:'Courier New', monospace">P_sparse = P_tot − P_act</p>
+<p style="font-size:32px;font-weight:600;font-family:'Courier New', monospace">P_MoE = ρ · P_sparse<br>P_Engram = (1 − ρ) · P_sparse</p>
+<ul style="font-size:28px;line-height:1.5;color:#3D4654">
+<li>P_tot: all trainable parameters, without embeddings and LM head</li>
+<li>P_act: parameters used per token, which sets FLOPs</li>
+<li>P_sparse: the “free” budget that adds capacity without compute</li>
+</ul>
 </div>
-<x-shape kind="arrow-right" style="width:120px;height:60px;background:#C8CED8"></x-shape>
-<div style="flex:1;display:flex;flex-direction:column;gap:16px">
-<p style="font-size:120px;font-weight:700;line-height:1.1;color:#14213D">12,288</p>
-<p style="font-size:32px;line-height:1.4;color:#3D4654">每個 token 實際讀取的值</p>
+<div style="width:600px;display:flex;flex-direction:column;gap:24px;justify-content:center">
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:104px;font-weight:700;line-height:1.05;color:#B8501F">196.6B</p>
+<p style="font-size:28px;color:#3D4654">Engram parameters in DeepSeek-V4.1</p>
+<p style="font-family:'Space Grotesk', Arial, sans-serif;font-size:104px;font-weight:700;line-height:1.05">12,288</p>
+<p style="font-size:28px;color:#3D4654">values read per token</p>
 </div>
 </div>
-<table style="font-size:30px;width:1664px">
-<tr><th style="width:24%">　</th><th style="width:38%">MoE：條件式運算</th><th style="width:38%">Engram：條件式記憶</th></tr>
-<tr><td>選擇依據</td><td>執行時的 hidden state</td><td>token ID，執行前已知</td></tr>
-</table>
-<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">本研究依 V4.1 設定計算：2 模組 × 24 row × 256 維。投影矩陣仍是每 token 的固定成本。</p>
-<aside>Issue 問的 Total、Activated 與 FLOPs 的關係就在這裡：activated 決定 FLOPs，擴大表只增加 total。但 O(1) 只對 row 數成立，投影矩陣和維度仍有成本。</aside>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#59626F">Formulas: paper §3.1. V4.1: our calculation (2 modules × 24 rows × 256). The key/value projection is still a fixed per-token cost.</p>
+<aside>Activated parameters set FLOPs; growing the table only grows total parameters. O(1) holds for the number of rows, not for the embedding width.</aside>
 </section>
